@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plumclock</title>
+    <!-- 蟲蟲，洞洞，梅子，葉子，螞蟻，葉子飄落，梅子掉樹洞 -->
+    <style>
+      #body {
+        background: rgb(129, 110, 84);
+        /* text-align: center;
+        width: 1000px;*/
+        height: 600px;
+        position: relative;
+        top: 400px;
+        background-repeat: repeat-x;
+      }
+
+      .leaf {
+        width: 35px;
+        height: 30px;
+        /* border:1px solid rgba(90, 124, 80, 0.596) ; */
+        background: rgb(127, 161, 83);
+        padding-bottom: 20px;
+        border-radius: 12px 120px 15px 100px;
+        position: absolute;
+        top: -100px;
+        right: 300px;
+        /* 無法重複 */
+        /* background-repeat: repeat-x; */
+        transform: rotate(45deg);
+        /* animation-duration: 5s  ; */
+      }
+
+      .leaf2 {
+        width: 35px;
+        height: 30px;
+        /* border:1px solid rgba(90, 124, 80, 0.596) ; */
+        background: rgba(83, 128, 72, 0.658);
+        padding-bottom: 20px;
+        border-radius: 12px 120px 15px 100px;
+        position: absolute;
+        top: 10px;
+        right: -180px;
+        transform: rotate(-10deg);
+      }
+
+      .land-hole {
+        width: 60px;
+        height: 800px;
+        border: 0px solid #fff;
+        border-radius: 25px 20px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        transform: rotate(90deg);
+        bottom: -570px;
+        right: -340px;
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole2 {
+        width: 90px;
+        height: 60px;
+        border: 0px solid #fff;
+        border-radius: 25px 45px 30px;
+        background: rgba(100, 70, 52, 0.582);
+        position: absolute;
+        bottom: -250px;
+        left: -100px;
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+        /* box-shadow:inset 5px 5px 5px 5px rgba(0, 0, 0, 0.274); */
+      }
+
+      .land-hole3 {
+        width: 60px;
+        height: 130px;
+        border: 0px solid #fff;
+        border-radius: 20px 40px 25px 240px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -200px;
+        left: 140px;
+        transform: rotate(0deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+        /* box-shadow:inset 5px 5px 5px 5px rgba(0, 0, 0, 0.274); */
+      }
+
+      .land-hole4 {
+        width: 60px;
+        height: 185px;
+        border: 0px solid #fff;
+        border-radius: 35px 134px 60px 136px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -155px;
+        left: 192px;
+        transform: rotate(65deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+        /* box-shadow:inset 5px 5px 5px 5px rgba(0, 0, 0, 0.274); */
+      }
+
+      .land-hole5 {
+        width: 60px;
+        height: 125px;
+        border: 0px solid #fff;
+        border-radius: 136px 136px 140px 150px;
+        background: rgba(100, 70, 52, 0.527);
+        position: absolute;
+        bottom: -500px;
+        left: 460px;
+        transform: rotate(180deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+        /* box-shadow:inset 5px 5px 5px 5px rgba(0, 0, 0, 0.274); */
+      }
+
+      .land-hole6 {
+        width: 60px;
+        height: 100px;
+        border: 0px solid #fff;
+        border-radius: 36px 36px 30px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -330px;
+        left: 388px;
+        transform: rotate(-90deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole7 {
+        width: 60px;
+        height: 100px;
+        border: 0px solid #fff;
+        border-radius: 136px 136px 140px 60px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -350px;
+        left: 350px;
+        transform: rotate(180deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole8 {
+        width: 60px;
+        height: 300px;
+        border: 0px solid #fff;
+        border-radius: 136px 136px 0px 0px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -650px;
+        left: -225px;
+        transform: rotate(90deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole9 {
+        width: 60px;
+        height: 200px;
+        border: 0px solid #fff;
+        border-radius: 136px 136px 0px 0px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -600px;
+        left: -125px;
+        transform: rotate(0deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole10 {
+        width: 60px;
+        height: 220px;
+        border: 0px solid #fff;
+        border-radius: 50px 25px 35px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -500px;
+        left: 100px;
+        transform: rotate(0deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole11 {
+        width: 60px;
+        height: 47px;
+        border: 0px solid #fff;
+        border-radius: 50px 45px 35px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -560px;
+        left: 105px;
+        transform: rotate(180deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole12 {
+        width: 60px;
+        height: 450px;
+        border: 0px solid #fff;
+        border-radius: 50px 45px 35px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -580px;
+        left: -130px;
+        transform: rotate(90deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole13 {
+        width: 60px;
+        height: 130px;
+        border: 0px solid #fff;
+        border-radius: 50px 45px 35px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -215px;
+        left: -245px;
+        transform: rotate(0deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole14 {
+        width: 60px;
+        height: 170px;
+        border: 0px solid #fff;
+        border-radius: 50px 45px 5px 55px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -630px;
+        left: 350px;
+        transform: rotate(-40deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .land-hole15 {
+        width: 60px;
+        height: 100px;
+        border: 0px solid #fff;
+        border-radius: 50px 45px 35px 30px;
+        background: rgb(100, 70, 52);
+        position: absolute;
+        bottom: -160px;
+        left: -200px;
+        transform: rotate(90deg);
+        box-shadow: inset 5px 5px 5px 5px rgba(59, 55, 55, 0.474);
+      }
+
+      .hole {
+        width: 32px;
+        height: 10px;
+        background: rgba(156, 146, 137, 0.623);
+        background-image: linear-gradient(80deg, rgba(54, 28, 28, 0.705), rgba(110, 107, 101, 0.651));
+
+        border-radius: 46% 30% 44% 58%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 218px;
+        left: 35px;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+      }
+
+      .insect-tail {
+        width: 25px;
+        height: 30px;
+        background: rgba(246, 143, 47, 0.623);
+        background-image: linear-gradient(100deg, rgb(250, 216, 255), rgba(166, 128, 170, 0.993));
+        border-radius: 36% 50% 44% 58%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 225px;
+        left: 35px;
+        margin: auto;
+        /* -webkit-transform: rotate(120deg); */
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 1s steps(3, start) infinite;
+        /* text-align: center;
+              align-items: center; */
+      }
+
+      .insect-body {
+        width: 30px;
+        height: 28px;
+        background: rgba(246, 143, 47, 0.623);
+        background-image: linear-gradient(190deg, rgb(245, 255, 210), rgb(80, 165, 180));
+        border-radius: 40% 44% 32% 53%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 240px;
+        left: 10px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 3s steps(4, start) infinite;
+        /* text-align: center;
+              align-items: center; */
+      }
+      .insect-face {
+        width: 52px;
+        height: 48px;
+        background: rgba(246, 143, 47, 0.623);
+        background-image: linear-gradient(120deg, rgb(255, 255, 216), rgb(140, 168, 93));
+        border-radius: 48% 42% 53% 4%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 240px;
+        left: -20px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 1.5s steps(3, start) infinite;
+        /* text-align: center;
+              align-items: center; */
+      }
+      /* 讓毛毛蟲蠕動 */
+      .insect-norse {
+        width: 25px;
+        height: 25px;
+        background: rgba(233, 117, 181, 0.466), radial-gradient(circle at 100px 100px, #fff9e4, rgba(53, 50, 48, 0.568) 100%);
+        background-image: linear-gradient(-200deg, rgba(255, 159, 104, 0.767) 20%, rgba(226, 100, 83, 0.733) 50%),
+          radial-gradient(circle at 100px 100px, #fff9e4, rgb(53, 50, 48) 60%);
+        border-radius: 42% 45% 45% 47%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 235px;
+        left: -27px;
+        margin: auto;
+        transform: rotate(30deg) scale(1.2);
+        /* -moz-transform: skew(100deg);
+        transform: skew(15deg); */
+        animation: move 2s steps(3, start) infinite;
+      }
+
+      /* .insect-norse:hover {
+        transform: rotate(45deg) scale(1.2);
+      } */
+
+      .insect-eye4 {
+        width: 20px;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.507), radial-gradient(circle at 100px 100px, #000000, rgba(53, 50, 48, 0.377) 100%);
+        background-image: linear-gradient(-200deg, rgba(68, 62, 59, 0.658) 50%, rgb(0, 0, 0) 50%), radial-gradient(circle at 100px 100px, #000000, rgba(0, 0, 0, 0.432) 100%);
+        border-radius: 42% 45% 45% 42%;
+        /* border:0.5px solid rgba(190, 162, 162, 0.466); */
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 255px;
+        left: -10px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 2.2s steps(3, start) infinite;
+      }
+
+      .insect-eye3 {
+        width: 17px;
+        height: 17px;
+        background: rgba(0, 0, 0, 0.507), radial-gradient(circle at 100px 100px, #000000, rgba(53, 50, 48, 0.432) 100%);
+        background-image: linear-gradient(-200deg, rgba(88, 83, 81, 0.267) 50%, rgb(0, 0, 0) 50%), radial-gradient(circle at 100px 100px, #000000, rgba(0, 0, 0, 0.432) 100%);
+        border-radius: 42% 45% 45% 42%;
+        position: absolute;
+        bottom: 257px;
+        left: -26px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 2.2s steps(3, start) infinite;
+      }
+      .insect-eye1 {
+        width: 18px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.884), radial-gradient(circle at 100px 100px, #fff9e4, rgba(53, 50, 48, 0.568) 50%);
+        background-image: linear-gradient(-200deg, rgba(255, 234, 221, 0.767) 20%, rgba(255, 255, 255, 0.733) 50%),
+          radial-gradient(circle at 100px 100px, #fff9e4, rgb(255, 255, 255) 60%);
+        border-radius: 42% 45% 45% 42%;
+        /* border:0.5px solid rgba(190, 162, 162, 0.466); */
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 260px;
+        left: -27px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 2.2s steps(3, start) infinite;
+      }
+
+      .insect-eye2 {
+        width: 26px;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.507), radial-gradient(circle at 100px 100px, #fff9e4, rgba(53, 50, 48, 0.377) 100%);
+        background-image: linear-gradient(-200deg, rgba(255, 234, 221, 0.767) 20%, rgba(255, 255, 255, 0.733) 50%),
+          radial-gradient(circle at 100px 100px, #fff9e4, rgba(255, 255, 255, 0.432) 60%);
+        border-radius: 42% 45% 45% 42%;
+        /* border:0.5px solid rgba(190, 162, 162, 0.466); */
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        bottom: 255px;
+        left: -10px;
+        margin: auto;
+        transform: rotate(360deg) infinite;
+        -moz-transform: skew(100deg);
+        transform: skew(15deg);
+        animation: move 2.2s steps(3, start) infinite;
+      }
+
+      .plum {
+        width: 30px;
+        height: 32px;
+        background: rgba(216, 161, 161, 0.082);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 50% 44% 46% 44%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        top: 218px;
+        right: 300px;
+        box-shadow: inset 0 10px 60px rgba(206, 150, 118, 0.507);
+      }
+
+      .plum2 {
+        width: 80px;
+        height: 82px;
+        background: rgb(212, 144, 159);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 50% 44% 46% 44%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        top: 200px;
+        right: -160px;
+        box-shadow: inset 0px 0px 15px rgba(165, 114, 99, 0.644);
+        /* animation: background-fade 10s forwards;  */
+      }
+
+      #second {
+        width: 46px;
+        height: 44px;
+        background: rgb(252, 255, 99);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 50% 44% 46% 44%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        /* forwards 讓動作停止 */
+        top: 250px;
+        right: 50px;
+        box-shadow: inset 0px 0px 15px rgba(136, 113, 80, 0.644);
+        animation: scroll 60s steps(20, end) infinite;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(-225px);
+        }
+
+        20% {
+          transform: translateX(135px);
+        }
+        50% {
+          transform: translateY(50px);
+        }
+        70% {
+          transform: translateY(150px);
+        }
+
+        100% {
+          transform: rotate(15deg) translateX(570px);
+        }
+      }
+
+      .plum4 {
+        width: 66px;
+        height: 64px;
+        background: rgb(135, 207, 144);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 50% 48% 46% 44%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        top: 230px;
+        right: 200px;
+        box-shadow: inset 0px 0px 15px rgba(136, 113, 80, 0.644);
+      }
+
+      .plum5 {
+        width: 60px;
+        height: 64px;
+        background: rgb(236, 197, 152);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 50% 48% 46% 44%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: absolute;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        top: 230px;
+        right: 680px;
+        box-shadow: inset 0px 0px 15px rgba(136, 113, 80, 0.644);
+      }
+
+      @keyframes move {
+        0% {
+          transform: translateX(5px);
+        }
+
+        50% {
+          transform: translateY(5px);
+        }
+      }
+
+      /* text-align: center;
+              align-items: center; */
+
+      #clock {
+        width: 250px;
+        height: 250px;
+        background: rgba(216, 161, 161, 0.5);
+        /* radial-gradient(circle at 1px 1px, #ffdcea4d, rgba(0, 0, 0, 0.24)); */
+        border-radius: 36% 50% 44% 58%;
+        /* 沒加position relative 就不能調left right 等等 */
+        position: relative;
+        margin: auto;
+        /* text-align: center;
+              align-items: center; */
+        transform: translateY(-250px);
+        box-shadow: inset 0 10px 60px rgba(206, 150, 118, 0.507);
+      }
+      #hour {
+        position: absolute;
+        height: 10px;
+        width: 20%;
+        background: rgba(0, 0, 0, 0.363);
+        border-radius: 5px;
+        left: 30%;
+        top: calc(50% - 5px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      }
+      #minute {
+        position: absolute;
+        height: 6px;
+        width: 35%;
+        background: rgba(255, 255, 255, 0.438);
+        border-radius: 5px;
+        left: 15%;
+        top: calc(50% - 3px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      }
+      /* #second {
+        position: absolute;
+        height: 1px;
+        width: 45%;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        left: 5%;
+        top: calc(50% - 3px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      } */
+      /* .multi rotate {
+        transform: translateY(5px);}  */
+    </style>
+  </head>
+  <body>
+    <div id="body">
+      <div id="clock">
+        <div class="hole"></div>
+        <div class="land-hole"></div>
+        <div class="land-hole2"></div>
+        <div class="land-hole3"></div>
+        <div class="land-hole4"></div>
+        <div class="land-hole5"></div>
+        <div class="land-hole6"></div>
+        <div class="land-hole7"></div>
+        <div class="land-hole8"></div>
+        <div class="land-hole9"></div>
+        <div class="land-hole10"></div>
+        <div class="land-hole11"></div>
+        <div class="land-hole12"></div>
+        <div class="land-hole13"></div>
+        <div class="land-hole14"></div>
+        <div class="land-hole15"></div>
+        <div class="land-hole16"></div>
+        <div class="plum"></div>
+        <div class="plum2"></div>
+        <div class="plum3"></div>
+        <div class="plum4"></div>
+        <div class="plum5"></div>
+        <div class="insect-tail"></div>
+        <div class="insect-body"></div>
+        <div class="insect-face"></div>
+        <div class="insect-eye1"></div>
+        <div class="insect-eye2"></div>
+        <div class="insect-eye3"></div>
+        <div class="insect-eye4"></div>
+        <div class="insect-norse"></div>
+        <div class="leaf"></div>
+        <div class="leaf2"></div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+      </div>
+    </div>
+    <script>
+      const hour = document.getElementById("hour");
+      const minute = document.getElementById("minute");
+      const second = document.getElementById("second");
+      const setClock = () => {
+        const now = new Date();
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+        hour.style.transform = `rotate(${h * 30 + 90}deg)`;
+        minute.style.transform = `rotate(${m * 6 + 90}deg)`;
+        second.style.transform = `rotate(${s * 6 + 90}deg)`;
+      };
+      setInterval(setClock, 1000);
+      setClock();
+    </script>
+  </body>
+</html>
